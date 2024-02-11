@@ -36,6 +36,10 @@ const SignUpScreen = ({ navigation }) => {
       <Spacer>
         <Button title="Signup" />
       </Spacer>
+
+      <Spacer>
+        <Button title="Main Flow" onPress={()=> navigation.navigate("mainFlow")} />
+      </Spacer>
     </View>
   );
 };

@@ -8,7 +8,8 @@ import TrackDetailsScreen from "./screens/TrackDetailsScreen";
 import TrackListScreen from "./screens/TrackListScreen";
 import TrackCreateScreen from "./screens/TrackCreateScreen";
 import React from "react";
-import { Provider as AuthProvider } from "./context/AuthContext";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
 const SwitchNavigator = createSwitchNavigator({
   loginFlow: createStackNavigator({
@@ -20,16 +21,17 @@ const SwitchNavigator = createSwitchNavigator({
       TrackList: TrackListScreen,
       TrackDetail: TrackDetailsScreen,
     }),
-    Account: AccountScreen,
     TrackCreate: TrackCreateScreen,
+    Account: AccountScreen,
   }),
 });
 
-//export default createAppContainer(SwitchNavigator);
 const App = createAppContainer(SwitchNavigator);
 
 export default () => {
-  return <AuthProvider>
-    <App />
-  </AuthProvider>;
-};
+  return (
+    <Provider store={store}>
+      <App/>
+    </Provider>
+  )
+}
